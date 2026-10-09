@@ -264,4 +264,27 @@
 
         if (error) {
             message.textContent =
-                'تع
+             'تعذر تسجيل الدخول. تحقق من البريد الإلكتروني وكلمة المرور.';
+            return;
+        }
+
+        await showStudents(data.user);
+    });
+
+    document.getElementById('logoutButton')
+        .addEventListener('click', async () => {
+            await supabase.auth.signOut();
+            showLogin();
+            loginForm.reset();
+        });
+
+    const { data: sessionData } = await supabase.auth.getSession();
+
+    if (sessionData.session) {
+        await showStudents(sessionData.session.user);
+    } else {
+        showLogin();
+    }
+</script>
+</body>
+</html>   
