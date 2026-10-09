@@ -3,9 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>معهد الحسنين</title>
+    <meta name="theme-color" content="#35452f">
+
+    <title>معهد الحسنين | لوحة المعلمين</title>
 
     <style>
+        :root {
+            --green: #35452f;
+            --green-light: #53694a;
+            --gold: #c3a66b;
+            --beige: #f5f1e7;
+            --white: #ffffff;
+            --text: #30382d;
+            --muted: #777d72;
+            --border: #e8e2d5;
+        }
+
         * {
             box-sizing: border-box;
         }
@@ -13,161 +26,474 @@
         body {
             margin: 0;
             font-family: Tahoma, Arial, sans-serif;
-            background: #f5f1e7;
-            color: #333b2b;
+            background: var(--beige);
+            color: var(--text);
+            min-height: 100vh;
         }
 
-        header {
-            background: #455638;
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .topbar {
+            background: var(--green);
             color: white;
-            text-align: center;
-            padding: 30px 15px;
-            border-bottom: 5px solid #c3a66b;
+            padding: 28px 18px 25px;
+            border-bottom: 5px solid var(--gold);
         }
 
-        header h1 {
-            margin: 0 0 10px;
-            font-size: 27px;
+        .topbar-inner {
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
-        header p {
+        .brand-mark {
+            width: 58px;
+            height: 58px;
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--gold);
+            border-radius: 16px;
+            color: var(--gold);
+            font-size: 29px;
+            font-weight: bold;
+        }
+
+        .brand h1 {
+            margin: 0 0 8px;
+            font-size: 25px;
+        }
+
+        .brand p {
             margin: 0;
-            font-size: 15px;
+            color: #e6e4d9;
+            font-size: 14px;
+            line-height: 1.8;
         }
 
         main {
-            max-width: 600px;
+            max-width: 1000px;
             margin: 30px auto;
-            padding: 0 15px;
+            padding: 0 16px 35px;
         }
 
         .card {
-            background: white;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
             padding: 24px;
-            border-radius: 14px;
-            box-shadow: 0 4px 15px #0000000d;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
+            box-shadow: 0 5px 20px rgba(42, 51, 35, 0.04);
         }
 
-        h2 {
-            color: #455638;
-            margin-top: 0;
+        .login-card {
+            max-width: 470px;
+            margin: 35px auto;
+        }
+
+        .section-title {
+            color: var(--green);
+            font-size: 21px;
+            margin: 0 0 9px;
+        }
+
+        .description {
+            color: var(--muted);
+            line-height: 1.9;
+            font-size: 14px;
+            margin: 0 0 22px;
         }
 
         label {
             display: block;
-            margin: 15px 0 7px;
+            margin: 16px 0 8px;
+            font-size: 14px;
+            font-weight: bold;
         }
 
         input {
             width: 100%;
-            padding: 13px;
-            border: 1px solid #d5d0c3;
-            border-radius: 8px;
-            font-size: 16px;
-            direction: ltr;
-            text-align: left;
+            min-height: 48px;
+            border: 1px solid #dcd6c9;
+            border-radius: 10px;
+            padding: 12px 14px;
+            background: #fffefa;
+            color: var(--text);
+            outline: none;
         }
 
-        button {
-            width: 100%;
-            padding: 13px;
-            margin-top: 18px;
-            border: none;
-            border-radius: 8px;
-            background: #455638;
+        input:focus {
+            border-color: var(--green-light);
+            box-shadow: 0 0 0 3px rgba(83, 105, 74, 0.12);
+        }
+
+        .primary-button,
+        .logout-button {
+            min-height: 47px;
+            border: 0;
+            border-radius: 10px;
+            padding: 12px 18px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .primary-button {
+            background: var(--green);
             color: white;
-            font-size: 16px;
-            cursor: pointer;
+        }
+
+        .primary-button:hover {
+            background: var(--green-light);
+        }
+
+        .login-button {
+            width: 100%;
+            margin-top: 22px;
         }
 
         button:disabled {
-            opacity: 0.6;
+            opacity: 0.65;
+            cursor: wait;
         }
 
-        .secondary {
-            background: #8a7751;
+        .message {
+            margin-top: 15px;
+            font-size: 14px;
+            line-height: 1.9;
+            overflow-wrap: anywhere;
+        }
+
+        .error {
+            color: #a52c2c;
+        }
+
+        .success {
+            color: var(--green-light);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .dashboard-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+        }
+
+        .welcome {
+            color: var(--muted);
+            font-size: 14px;
+            margin: 7px 0 0;
+            overflow-wrap: anywhere;
+        }
+
+        .logout-button {
+            background: #eee8db;
+            color: var(--green);
+        }
+
+        .logout-button:hover {
+            background: #e3dac8;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            background: #edf0e7;
+            color: var(--green);
+            font-size: 23px;
+            flex-shrink: 0;
+        }
+
+        .stat-label {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
+
+        .stat-number {
+            color: var(--green);
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .search-box {
+            position: relative;
+            margin: 18px 0;
+        }
+
+        .search-box input {
+            padding-right: 43px;
+            background: #faf9f5;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 14px;
+            top: 13px;
+            font-size: 19px;
+            color: var(--muted);
+        }
+
+        .student-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 14px;
         }
 
         .student {
-            background: #faf8f2;
-            border: 1px solid #e4dece;
-            border-radius: 9px;
-            padding: 15px;
-            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 17px;
+            border: 1px solid var(--border);
+            border-radius: 13px;
+            background: #fffefa;
+            transition: border-color 0.2s, transform 0.2s;
         }
 
-        .student strong {
-            display: block;
-            margin-bottom: 6px;
+        .student:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
         }
 
-        #message {
-            margin-top: 15px;
+        .student-avatar {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            background: var(--green);
+            color: white;
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .student-info {
+            min-width: 0;
+        }
+
+        .student-name {
+            font-weight: bold;
+            font-size: 15px;
             line-height: 1.8;
             overflow-wrap: anywhere;
         }
 
-        .hidden {
-            display: none;
+        .student-level {
+            margin-top: 5px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 30px 12px;
+            color: var(--muted);
+            line-height: 2;
+        }
+
+        .empty-icon {
+            font-size: 35px;
+            margin-bottom: 8px;
         }
 
         footer {
             text-align: center;
-            padding: 20px;
-            color: #777;
-            font-size: 13px;
+            padding: 22px 15px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        @media (max-width: 480px) {
+            .topbar {
+                padding: 23px 15px;
+            }
+
+            .brand-mark {
+                width: 48px;
+                height: 48px;
+                font-size: 24px;
+            }
+
+            .brand h1 {
+                font-size: 21px;
+            }
+
+            .brand p {
+                font-size: 12px;
+            }
+
+            main {
+                margin-top: 20px;
+                padding-right: 12px;
+                padding-left: 12px;
+            }
+
+            .card {
+                padding: 19px;
+            }
+
+            .dashboard-heading {
+                align-items: stretch;
+            }
+
+            .logout-button {
+                width: 100%;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<header>
-    <h1>معهد الحسنين</h1>
-    <p>لتعليم القرآن الكريم والعلوم الشرعية</p>
+<header class="topbar">
+    <div class="topbar-inner">
+        <div class="brand-mark" aria-hidden="true">ح</div>
+
+        <div class="brand">
+            <h1>معهد الحسنين</h1>
+            <p>لتعليم القرآن الكريم والعلوم الشرعية</p>
+        </div>
+    </div>
 </header>
 
 <main>
 
-    <section class="card" id="loginCard">
-        <h2>تسجيل دخول المعلمين</h2>
-        <p>يرجى تسجيل الدخول للوصول إلى ملفات الطلاب.</p>
+    <section class="card login-card" id="loginCard">
+        <h2 class="section-title">تسجيل دخول المعلمين</h2>
+
+        <p class="description">
+            أهلاً بك في لوحة إدارة المعهد.
+            سجّل الدخول للوصول إلى بيانات الطلاب.
+        </p>
 
         <form id="loginForm">
             <label for="email">البريد الإلكتروني</label>
-            <input id="email" type="email"
-                   autocomplete="username" required>
+            <input
+                id="email"
+                type="email"
+                autocomplete="username"
+                required
+            >
 
             <label for="password">كلمة المرور</label>
-            <input id="password" type="password"
-                   autocomplete="current-password" required>
+            <input
+                id="password"
+                type="password"
+                autocomplete="current-password"
+                required
+            >
 
-            <button id="loginButton" type="submit">
+            <button class="primary-button login-button"
+                    id="loginButton" type="submit">
                 تسجيل الدخول
             </button>
         </form>
 
-        <div id="message" role="status"></div>
+        <div class="message" id="message" role="status"></div>
     </section>
 
-    <section class="card hidden" id="studentsCard">
-        <h2>طلاب المعهد</h2>
-        <p id="welcome"></p>
+    <section id="dashboard" class="hidden">
 
-        <div id="studentsList">جارٍ تحميل الطلاب...</div>
+        <div class="dashboard-heading">
+            <div>
+                <h2 class="section-title">لوحة المعهد</h2>
+                <p class="welcome" id="welcome"></p>
+            </div>
 
-        <button class="secondary" id="logoutButton">
-            تسجيل الخروج
-        </button>
+            <button class="logout-button" id="logoutButton">
+                تسجيل الخروج
+            </button>
+        </div>
 
-        <div id="studentsMessage" role="status"></div>
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-icon" aria-hidden="true">♧</div>
+                <div>
+                    <div class="stat-label">إجمالي الطلاب</div>
+                    <div class="stat-number" id="studentCount">—</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon" aria-hidden="true">📖</div>
+                <div>
+                    <div class="stat-label">حالة النظام</div>
+                    <div class="stat-number" style="font-size:18px">
+                        متصل
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="card">
+            <h2 class="section-title">طلاب المعهد</h2>
+            <p class="description">
+                ابحث عن الطالب بالاسم أو اعرض قائمة الطلاب المسجلين.
+            </p>
+
+            <div class="search-box">
+                <span class="search-icon" aria-hidden="true">⌕</span>
+                <input
+                    id="searchInput"
+                    type="search"
+                    placeholder="ابحث عن اسم الطالب..."
+                    aria-label="البحث عن طالب"
+                >
+            </div>
+
+            <div id="studentsList" class="student-grid">
+                <div class="empty-state">جارٍ تحميل الطلاب...</div>
+            </div>
+
+            <div class="message" id="studentsMessage" role="status"></div>
+        </section>
+
     </section>
 
 </main>
 
 <footer>
     معهد الحسنين لتعليم القرآن الكريم والعلوم الشرعية
+    <br>
+    العلم والعبادة
 </footer>
 
 <script type="module">
@@ -186,62 +512,125 @@
     );
 
     const loginCard = document.getElementById('loginCard');
-    const studentsCard = document.getElementById('studentsCard');
+    const dashboard = document.getElementById('dashboard');
     const loginForm = document.getElementById('loginForm');
     const loginButton = document.getElementById('loginButton');
     const message = document.getElementById('message');
     const studentsList = document.getElementById('studentsList');
     const studentsMessage = document.getElementById('studentsMessage');
+    const searchInput = document.getElementById('searchInput');
+    const studentCount = document.getElementById('studentCount');
+
+    let allStudents = [];
 
     function showLogin() {
         loginCard.classList.remove('hidden');
-        studentsCard.classList.add('hidden');
+        dashboard.classList.add('hidden');
         message.textContent = '';
+        message.className = 'message';
     }
 
-    async function showStudents(user) {
+    function showDashboard(user) {
         loginCard.classList.add('hidden');
-        studentsCard.classList.remove('hidden');
+        dashboard.classList.remove('hidden');
 
         document.getElementById('welcome').textContent =
-            'أهلًا بك، ' + user.email;
+            'أهلاً بك، ' + (user.email || 'معلّم المعهد');
+    }
 
-        studentsList.textContent = 'جارٍ تحميل الطلاب...';
-        studentsMessage.textContent = '';
+    function renderStudents() {
+        const query = searchInput.value.trim().toLocaleLowerCase('ar');
 
-        const { data, error } = await supabase
-            .from('Students')
-            .select('*')
-            .order('id', { ascending: true });
+        const filtered = allStudents.filter(student => {
+            const name = String(student['Full name'] || '')
+                .toLocaleLowerCase('ar');
 
-        if (error) {
-            studentsList.textContent =
-                'تعذر تحميل الطلاب. تحقق من صلاحيات قاعدة البيانات.';
-            studentsMessage.textContent = error.message;
-            return;
-        }
+            const level = String(student.level || '')
+                .toLocaleLowerCase('ar');
+
+            return name.includes(query) || level.includes(query);
+        });
 
         studentsList.replaceChildren();
+        studentCount.textContent = allStudents.length;
 
-        if (!data || data.length === 0) {
-            studentsList.textContent = 'لا يوجد طلاب مسجلون حتى الآن.';
+        if (filtered.length === 0) {
+            const empty = document.createElement('div');
+            empty.className = 'empty-state';
+            empty.style.gridColumn = '1 / -1';
+
+            const icon = document.createElement('div');
+            icon.className = 'empty-icon';
+            icon.textContent = allStudents.length === 0 ? '📚' : '🔎';
+
+            const text = document.createElement('div');
+            text.textContent = allStudents.length === 0
+                ? 'لا يوجد طلاب مسجلون حتى الآن.'
+                : 'لم نعثر على طالب بهذا الاسم.';
+
+            empty.append(icon, text);
+            studentsList.appendChild(empty);
             return;
         }
 
-        data.forEach(student => {
-            const box = document.createElement('div');
+        filtered.forEach(student => {
+            const box = document.createElement('article');
             box.className = 'student';
 
-            const name = document.createElement('strong');
-            name.textContent = student['Full name'] || 'اسم غير محدد';
+            const avatar = document.createElement('div');
+            avatar.className = 'student-avatar';
 
-            const level = document.createElement('span');
+            const nameText = String(
+                student['Full name'] || 'طالب'
+            );
+
+            avatar.textContent = nameText.trim().charAt(0) || 'ط';
+
+            const info = document.createElement('div');
+            info.className = 'student-info';
+
+            const name = document.createElement('div');
+            name.className = 'student-name';
+            name.textContent = nameText;
+
+            const level = document.createElement('div');
+            level.className = 'student-level';
             level.textContent =
                 'المستوى: ' + (student.level || 'غير محدد');
 
-            box.append(name, level);
+            info.append(name, level);
+            box.append(avatar, info);
             studentsList.appendChild(box);
         });
+    }
+
+    async function loadStudents() {
+        studentsList.textContent = 'جارٍ تحميل الطلاب...';
+        studentsMessage.textContent = '';
+
+        try {
+            const { data, error } = await supabase
+                .from('Students')
+                .select('*')
+                .order('id', { ascending: true });
+
+            if (error) {
+                throw error;
+            }
+
+            allStudents = data || [];
+            renderStudents();
+
+        } catch (error) {
+            studentsList.textContent =
+                'تعذر تحميل الطلاب. حاول تحديث الصفحة.';
+
+            studentsMessage.className = 'message error';
+            studentsMessage.textContent =
+                'تفاصيل الخطأ: ' + (error.message || 'خطأ غير معروف');
+
+            studentCount.textContent = '—';
+        }
     }
 
     loginForm.addEventListener('submit', async event => {
@@ -250,41 +639,85 @@
         loginButton.disabled = true;
         loginButton.textContent = 'جارٍ تسجيل الدخول...';
         message.textContent = '';
+        message.className = 'message';
 
         const email = document.getElementById('email').value.trim();
         const password = document.getElementById('password').value;
 
-        const { data, error } = await supabase.auth.signInWithPassword({
-            email,
-            password
-        });
+        try {
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email,
+                password
+            });
 
-        loginButton.disabled = false;
-        loginButton.textContent = 'تسجيل الدخول';
+            if (error) {
+                throw error;
+            }
 
-        if (error) {
+            showDashboard(data.user);
+            await loadStudents();
+
+        } catch (error) {
+            message.className = 'message error';
+
             message.textContent =
-             'تعذر تسجيل الدخول. تحقق من البريد الإلكتروني وكلمة المرور.';
-            return;
-        }
+                'تعذر تسجيل الدخول. تحقق من البريد الإلكتروني وكلمة المرور، ثم حاول مجدداً.';
 
-        await showStudents(data.user);
+        } finally {
+            loginButton.disabled = false;
+            loginButton.textContent = 'تسجيل الدخول';
+        }
     });
+
+    searchInput.addEventListener('input', renderStudents);
 
     document.getElementById('logoutButton')
         .addEventListener('click', async () => {
-            await supabase.auth.signOut();
-            showLogin();
+            const button = document.getElementById('logoutButton');
+            button.disabled = true;
+
+            const { error } = await supabase.auth.signOut();
+
+            button.disabled = false;
+
+            if (error) {
+                studentsMessage.className = 'message error';
+                studentsMessage.textContent =
+                    'تعذر تسجيل الخروج. حاول مجدداً.';
+                return;
+            }
+
+            allStudents = [];
             loginForm.reset();
+            searchInput.value = '';
+            showLogin();
         });
 
-    const { data: sessionData } = await supabase.auth.getSession();
+    async function initialize() {
+        try {
+            const { data, error } = await supabase.auth.getSession();
 
-    if (sessionData.session) {
-        await showStudents(sessionData.session.user);
-    } else {
-        showLogin();
+            if (error) {
+                throw error;
+            }
+
+            if (data.session) {
+                showDashboard(data.session.user);
+                await loadStudents();
+            } else {
+                showLogin();
+            }
+
+        } catch (error) {
+            showLogin();
+            message.className = 'message error';
+            message.textContent =
+                'تعذر الاتصال بخدمة تسجيل الدخول. تحقق من اتصال الإنترنت وحاول مجدداً.';
+        }
     }
+
+    initialize();
 </script>
+
 </body>
-</html>   
+</html>
