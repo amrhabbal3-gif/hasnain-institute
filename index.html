@@ -3,12 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>معهد الحسنين لتعليم القرآن الكريم والعلوم الشرعية</title>
+    <title>معهد الحسنين</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Tahoma, Arial, sans-serif;
+            background: #f5f1e7;
+            color: #333b2b;
+        }
+
+        header {
+            background: #455638;
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+            border-bottom: 5px solid #c3a66b;
+        }
+
+        header h1 {
+            margin: 0 0 10px;
+            font-size: 27px;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 15px;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .card {
+            background: white;
+            padding: 24px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px #0000000d;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #455638;
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 7px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d5d0c3;
+            border-radius: 8px;
+            font-size: 16px;
+            direction: ltr;
+            text-align: left;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 18px;
+            border: none;
+            border-radius: 8px;
+            background: #455638;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            opacity: 0.6;
+        }
+
+        .secondary {
+            background: #8a7751;
+        }
+
+        .student {
+            background: #faf8f2;
+            border: 1px solid #e4dece;
+            border-radius: 9px;
+            padding: 15px;
+            margin-top: 10px;
+        }
+
+        .student strong {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        #message {
+            margin-top: 15px;
+            line-height: 1.8;
+            overflow-wrap: anywhere;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 13px;
+        }
+    </style>
 </head>
+
 <body>
 
+<header>
     <h1>معهد الحسنين</h1>
     <p>لتعليم القرآن الكريم والعلوم الشرعية</p>
+</header>
 
-</body>
-</html>
+<main>
+
+    <section class="card" id="loginCard">
+        <h2>تسجيل دخول المعلمين</h2>
+        <p>يرجى تسجيل الدخول للوصول إلى ملفات الطلاب.</p>
+
+        <form id="loginForm">
+            <label for="email">البريد الإلكتروني</label>
+            <input id="email" type="email"
+                   autocomplete="username" required>
+
+            <label for="password">كلمة المرور</label>
+            <input id="password" type="password"
+                   autocomplete="current-password" required>
+
+            <button id="loginButton" type="submit">
+                تسجيل الدخول
+            </button>
+        </form>
+
+        <div id="message" role="status"></div>
+    </section>
+
+    <section class="card hidden" id="studentsCard">
+        <h2>طلاب المعهد</h2>
+        <p id="welcome"></p>
+
+        <div id="studentsList">جارٍ تحميل الطلاب...</div>
+
+        <button class="secondary" id="logoutButton">
+            تسجيل الخروج
+        </button>
+
+        <div id="studentsMessage" role="status"></div>
+    </section>
+
+</main>
+
+<footer>
+    معهد الحسنين لتعليم القرآن الكريم والعلوم الشرعية
+</footer>
+
+<script type="module">
+    import { createClient } from
+        'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+    const SUPABASE_URL =
+        'https://bzxwhvblkystvpczszgg.supabase.co';
+
+    const SUPABASE_KEY =
+        'sb_publishable_OgGHxU4TsK-ZSWzhMElG0Q_SxcYbYe6';
+
+    const supabase = createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+    const loginCard = document.getElementById('loginCard');
+    const studentsCard = document.getElementById('studentsCard');
+    const loginForm = document.getElementById('loginForm');
+    const loginButton = document.getElementById('loginButton');
+    const message = document.getElementById('message');
+    const studentsList = document.getElementById('studentsList');
+    const studentsMessage = document.getElementById('studentsMessage');
+
+    function showLogin() {
+        loginCard.classList.remove('hidden');
+        studentsCard.classList.add('hidden');
+        message.textContent = '';
+    }
+
+    async function showStudents(user) {
+        loginCard.classList.add('hidden');
+        studentsCard.classList.remove('hidden');
+
+        document.getElementById('welcome').textContent =
+            'أهلًا بك، ' + user.email;
+
+        studentsList.textContent = 'جارٍ تحميل الطلاب...';
+        studentsMessage.textContent = '';
+
+        const { data, error } = await supabase
+            .from('Students')
+            .select('*')
+            .order('id', { ascending: true });
+
+        if (error) {
+            studentsList.textContent =
+                'تعذر تحميل الطلاب. تحقق من صلاحيات قاعدة البيانات.';
+            studentsMessage.textContent = error.message;
+            return;
+        }
+
+        studentsList.replaceChildren();
+
+        if (!data || data.length === 0) {
+            studentsList.textContent = 'لا يوجد طلاب مسجلون حتى الآن.';
+            return;
+        }
+
+        data.forEach(student => {
+            const box = document.createElement('div');
+            box.className = 'student';
+
+            const name = document.createElement('strong');
+            name.textContent = student['Full name'] || 'اسم غير محدد';
+
+            const level = document.createElement('span');
+            level.textContent =
+                'المستوى: ' + (student.level || 'غير محدد');
+
+            box.append(name, level);
+            studentsList.appendChild(box);
+        });
+    }
+
+    loginForm.addEventListener('submit', async event => {
+        event.preventDefault();
+
+        loginButton.disabled = true;
+        loginButton.textContent = 'جارٍ تسجيل الدخول...';
+        message.textContent = '';
+
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email,
+            password
+        });
+
+        loginButton.disabled = false;
+        loginButton.textContent = 'تسجيل الدخول';
+
+        if (error) {
+            message.textContent =
+                'تع
