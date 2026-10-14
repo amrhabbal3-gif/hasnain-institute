@@ -13,11 +13,28 @@
 
 .daily-report{width:100%;min-width:720px;background:#fffdf7;color:#30382d;border:2px solid #c3a66b;border-radius:14px;padding:24px;font-family:Tahoma,Arial,sans-serif;box-shadow:0 4px 18px rgba(42,51,35,.08)}.report-heading{display:flex;align-items:center;justify-content:center;gap:14px;background:#35452f;color:#fff;padding:18px;border-bottom:4px solid #c3a66b;border-radius:9px}.report-mark{width:54px;height:54px;display:grid;place-items:center;border:1px solid #c3a66b;border-radius:14px;color:#e0c78d;font-size:28px;font-weight:bold}.report-heading h2{font-size:23px;margin:0 0 6px}.report-heading p{margin:0;color:#eee8db;font-size:14px}.report-title{text-align:center;margin:20px 0 12px}.report-title h3{font-size:22px;color:#35452f;margin:0 0 8px}.report-title div{font-size:15px;color:#6d725f}.report-stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:12px 0 18px}.report-stat{background:#f0eadb;border:1px solid #e1d4b6;border-radius:8px;padding:8px 14px;font-size:13px}.report-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:13px}.report-table th{background:#35452f;color:#fff;padding:11px 8px;border:1px solid #65735d}.report-table td{padding:10px 8px;border:1px solid #dcd6c9;text-align:center;vertical-align:middle;overflow-wrap:anywhere;line-height:1.7}.report-table tbody tr:nth-child(even){background:#f5f1e7}.report-table td:first-child{font-weight:bold;color:#35452f}.report-table th:nth-child(1){width:19%}.report-table th:nth-child(2){width:12%}.report-table th:nth-child(3){width:23%}.report-table th:nth-child(4){width:30%}.report-table th:nth-child(5){width:16%}.status-present{color:#2f6b3a;font-weight:bold}.status-absent{color:#a52c2c;font-weight:bold}.status-missing{color:#856c37;font-weight:bold}.report-footer{text-align:center;margin-top:18px;padding-top:12px;border-top:1px solid #c3a66b;color:#59634f;font-size:12px;line-height:1.8}
 .monthly-report{width:100%;background:#fffdf7;color:#30382d;border:2px solid #c3a66b;border-radius:14px;padding:22px;font-family:Tahoma,Arial,sans-serif}.monthly-report .report-heading{margin-bottom:16px}.monthly-summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:10px;margin:15px 0}.monthly-summary-card{background:#f0eadb;border:1px solid #e1d4b6;border-radius:10px;padding:12px;text-align:center}.monthly-summary-card span{display:block;font-size:12px;color:#777d72;line-height:1.7}.monthly-summary-card strong{display:block;font-size:23px;color:#35452f;margin-top:5px}.monthly-record{border:1px solid #e8e2d5;border-right:4px solid #c3a66b;background:#fffefa;border-radius:10px;padding:13px 14px;margin:10px 0;break-inside:avoid}.monthly-record-date{font-weight:bold;color:#35452f;margin-bottom:7px}.monthly-record p{margin:5px 0;font-size:13px;line-height:1.9;overflow-wrap:anywhere}.monthly-no-records{padding:18px;text-align:center;color:#777d72;background:#f5f1e7;border-radius:10px;line-height:1.9}.stats-metric{background:#fffdf7;border:1px solid var(--border);border-top:4px solid var(--gold);border-radius:13px;padding:17px}.stats-metric-label{font-size:13px;color:var(--muted);line-height:1.7}.stats-metric-value{font-size:27px;font-weight:bold;color:var(--green);margin-top:7px}.level-stat-row{display:flex;justify-content:space-between;gap:12px;padding:11px 4px;border-bottom:1px solid var(--border);line-height:1.8}.level-stat-row:last-child{border-bottom:0}.level-stat-row strong{color:var(--green)}
-@media(max-width:480px){.topbar{padding:23px 15px}.brand-mark{width:48px;height:48px;font-size:24px}.brand h1{font-size:21px}.brand p{font-size:12px}main{margin-top:20px;padding-right:12px;padding-left:12px}.card{padding:19px}.dashboard-heading{align-items:stretch}.logout-button{width:100%}.students-heading{align-items:stretch}.students-heading button{width:100%}.modal{padding:20px}.attendance-row{grid-template-columns:1fr;gap:7px}.attendance-controls select{width:100%}}
+@media(max-width:480px){.topbar{padding:23px 15px}.brand-mark{width:48px;height:48px;font-size:24px}.brand h1{font-size:21px}.brand p{font-size:12px}main{margin-top:20px;padding-right:12px;padding-left:12px}.card{padding:19px}.dashboard-heading{align-items:stretch}.logout-button{width:100%}.students-heading{align-items:stretch}.students-heading button{width:100%}.modal{padding:20px}.attendance-row{grid-template-columns:1fr;gap:7px}.attendance-controls select{width:100%}}.brand-mark img,
+.report-mark img {
+  display: block;
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  margin: auto;
+}
 </style>
 </head>
 <body>
-  <div class="report-heading"><div class="report-mark"><img src="logo.png" alt="شعار معهد الحسنين"></div><div><h2>معهد الحسنين</h2><p>لتعليم القرآن الكريم والعلوم الشرعية</p></div></div>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand-mark">
+      <img src="logo.png" alt="شعار معهد الحسنين">
+    </div>
+    <div class="brand">
+      <h1>معهد الحسنين</h1>
+      <p>لتعليم القرآن الكريم والعلوم الشرعية</p>
+    </div>
+  </div>
+</header>
 <main>
 <section class="card login-card" id="loginCard"><h2 class="section-title">تسجيل دخول المعلمين</h2><p class="description">أهلاً بك في لوحة إدارة المعهد. سجّل الدخول للوصول إلى بيانات الطلاب.</p><form id="loginForm"><label for="email">البريد الإلكتروني</label><input id="email" type="email" autocomplete="username" required><label for="password">كلمة المرور</label><input id="password" type="password" autocomplete="current-password" required><button class="primary-button login-button" id="loginButton" type="submit">تسجيل الدخول</button></form><div class="message" id="message" role="status"></div></section>
 <section id="dashboard" class="hidden"><div class="dashboard-heading"><div><h2 class="section-title">لوحة المعهد</h2><p class="welcome" id="welcome"></p></div><button class="logout-button" id="logoutButton">تسجيل الخروج</button></div>
