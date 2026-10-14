@@ -1,19 +1,726 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#35452f">
-<title>معهد الحسنين | لوحة المعلمين</title>
-<style>
-:root{--green:#35452f;--green-light:#53694a;--gold:#c3a66b;--beige:#f5f1e7;--white:#fff;--text:#30382d;--muted:#777d72;--border:#e8e2d5}
-*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--beige);color:var(--text);min-height:100vh}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.6;cursor:wait}.hidden{display:none!important}
-.topbar{background:var(--green);color:white;padding:26px 18px;border-bottom:5px solid var(--gold)}.topbar-inner{max-width:1000px;margin:auto;display:flex;align-items:center;gap:15px}.brand-mark{width:58px;height:58px;flex-shrink:0;display:grid;place-items:center;border:1px solid var(--gold);border-radius:16px;color:var(--gold);font-size:29px;font-weight:bold}.brand h1{margin:0 0 8px;font-size:25px}.brand p{margin:0;color:#e6e4d9;font-size:14px;line-height:1.8}main{max-width:1000px;margin:30px auto;padding:0 16px 35px}.card{background:white;border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:22px;box-shadow:0 5px 20px rgba(42,51,35,.04)}.login-card{max-width:470px;margin:35px auto}.section-title{color:var(--green);font-size:21px;margin:0 0 9px}.description{color:var(--muted);line-height:1.9;font-size:14px;margin:0 0 20px}label{display:block;margin:16px 0 8px;font-size:14px;font-weight:bold}input,select,textarea{width:100%;min-height:46px;border:1px solid #dcd6c9;border-radius:10px;padding:11px 13px;background:#fffefa;color:var(--text);outline:none}textarea{min-height:80px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:var(--green-light);box-shadow:0 0 0 3px rgba(83,105,74,.12)}.primary-button,.logout-button{min-height:45px;border:0;border-radius:10px;padding:11px 17px;font-weight:bold}.primary-button{background:var(--green);color:white}.primary-button:hover{background:var(--green-light)}.secondary-button,.logout-button{background:#eee8db;color:var(--green)}.secondary-button:hover,.logout-button:hover{background:#e3dac8}.login-button{width:100%;margin-top:22px}.message{margin-top:14px;font-size:14px;line-height:1.9;overflow-wrap:anywhere}.error{color:#a52c2c}.success{color:var(--green-light)}.dashboard-heading{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:22px}.welcome{color:var(--muted);font-size:14px;margin:7px 0 0;overflow-wrap:anywhere}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:22px}.stat-card{background:white;border:1px solid var(--border);border-radius:15px;padding:20px;display:flex;align-items:center;gap:15px}.stat-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:13px;background:#edf0e7;color:var(--green);font-size:23px;flex-shrink:0}.stat-label{color:var(--muted);font-size:13px;margin-bottom:7px}.stat-number{color:var(--green);font-size:25px;font-weight:bold}.students-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}.toolbar button{flex:1;min-width:160px}.search-box{position:relative;margin:18px 0}.search-box input{padding-right:43px;background:#faf9f5}.search-icon{position:absolute;right:14px;top:13px;font-size:19px;color:var(--muted)}.student-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.student{display:flex;align-items:center;gap:13px;padding:17px;border:1px solid var(--border);border-radius:13px;background:#fffefa;transition:border-color .2s,transform .2s}.student:hover{border-color:var(--gold);transform:translateY(-2px)}.student-avatar{width:46px;height:46px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;background:var(--green);color:white;font-size:19px;font-weight:bold}.student-info{min-width:0}.student-name{font-weight:bold;font-size:15px;line-height:1.8;overflow-wrap:anywhere}.student-level{margin-top:5px;color:var(--muted);font-size:13px;line-height:1.7}.empty-state{text-align:center;padding:30px 12px;color:var(--muted);line-height:2}.empty-icon{font-size:35px;margin-bottom:8px}.attendance-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(130px,190px);align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--border)}.attendance-row:last-child{border-bottom:0}.attendance-name{font-weight:bold;line-height:1.8}.attendance-level{font-size:12px;color:var(--muted);margin-top:3px}.attendance-controls{display:flex;gap:8px;align-items:center}.attendance-controls select{min-width:0}.attendance-tools{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0}.attendance-tools button{flex:1;min-width:150px}.profile-summary{display:flex;align-items:center;gap:14px;background:#f8f6ef;border:1px solid var(--border);border-radius:13px;padding:16px;margin:18px 0}.profile-summary .student-avatar{width:56px;height:56px;font-size:22px}.profile-history-item{border:1px solid var(--border);border-radius:12px;padding:15px;margin:12px 0;background:#fffefa}.history-date{font-weight:bold;color:var(--green);margin-bottom:8px}.history-line{font-size:14px;line-height:1.9;margin-top:5px;overflow-wrap:anywhere}.history-label{font-weight:bold;color:var(--green)}.profile-form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0 14px}.student{cursor:pointer}.student:focus{outline:2px solid var(--gold);outline-offset:2px}
-.modal-backdrop{position:fixed;inset:0;background:rgba(25,32,23,.62);display:flex;align-items:center;justify-content:center;padding:16px;z-index:1000;overflow-y:auto}.modal{width:100%;max-width:450px;background:white;border-radius:17px;padding:24px;border-top:5px solid var(--gold);box-shadow:0 15px 45px rgba(0,0,0,.2);margin:auto}.modal-title{color:var(--green);font-size:21px;margin:0 0 8px}.modal-description{color:var(--muted);font-size:13px;line-height:1.8;margin:0 0 15px}.modal-actions{display:flex;gap:10px;margin-top:22px}.modal-actions button{flex:1}footer{text-align:center;padding:22px 15px;color:var(--muted);font-size:12px;line-height:1.9}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#35452f">
 
-.daily-report{width:100%;min-width:720px;background:#fffdf7;color:#30382d;border:2px solid #c3a66b;border-radius:14px;padding:24px;font-family:Tahoma,Arial,sans-serif;box-shadow:0 4px 18px rgba(42,51,35,.08)}.report-heading{display:flex;align-items:center;justify-content:center;gap:14px;background:#35452f;color:#fff;padding:18px;border-bottom:4px solid #c3a66b;border-radius:9px}.report-mark{width:54px;height:54px;display:grid;place-items:center;border:1px solid #c3a66b;border-radius:14px;color:#e0c78d;font-size:28px;font-weight:bold}.report-heading h2{font-size:23px;margin:0 0 6px}.report-heading p{margin:0;color:#eee8db;font-size:14px}.report-title{text-align:center;margin:20px 0 12px}.report-title h3{font-size:22px;color:#35452f;margin:0 0 8px}.report-title div{font-size:15px;color:#6d725f}.report-stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:12px 0 18px}.report-stat{background:#f0eadb;border:1px solid #e1d4b6;border-radius:8px;padding:8px 14px;font-size:13px}.report-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:13px}.report-table th{background:#35452f;color:#fff;padding:11px 8px;border:1px solid #65735d}.report-table td{padding:10px 8px;border:1px solid #dcd6c9;text-align:center;vertical-align:middle;overflow-wrap:anywhere;line-height:1.7}.report-table tbody tr:nth-child(even){background:#f5f1e7}.report-table td:first-child{font-weight:bold;color:#35452f}.report-table th:nth-child(1){width:19%}.report-table th:nth-child(2){width:12%}.report-table th:nth-child(3){width:23%}.report-table th:nth-child(4){width:30%}.report-table th:nth-child(5){width:16%}.status-present{color:#2f6b3a;font-weight:bold}.status-absent{color:#a52c2c;font-weight:bold}.status-missing{color:#856c37;font-weight:bold}.report-footer{text-align:center;margin-top:18px;padding-top:12px;border-top:1px solid #c3a66b;color:#59634f;font-size:12px;line-height:1.8}
-.monthly-report{width:100%;background:#fffdf7;color:#30382d;border:2px solid #c3a66b;border-radius:14px;padding:22px;font-family:Tahoma,Arial,sans-serif}.monthly-report .report-heading{margin-bottom:16px}.monthly-summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:10px;margin:15px 0}.monthly-summary-card{background:#f0eadb;border:1px solid #e1d4b6;border-radius:10px;padding:12px;text-align:center}.monthly-summary-card span{display:block;font-size:12px;color:#777d72;line-height:1.7}.monthly-summary-card strong{display:block;font-size:23px;color:#35452f;margin-top:5px}.monthly-record{border:1px solid #e8e2d5;border-right:4px solid #c3a66b;background:#fffefa;border-radius:10px;padding:13px 14px;margin:10px 0;break-inside:avoid}.monthly-record-date{font-weight:bold;color:#35452f;margin-bottom:7px}.monthly-record p{margin:5px 0;font-size:13px;line-height:1.9;overflow-wrap:anywhere}.monthly-no-records{padding:18px;text-align:center;color:#777d72;background:#f5f1e7;border-radius:10px;line-height:1.9}.stats-metric{background:#fffdf7;border:1px solid var(--border);border-top:4px solid var(--gold);border-radius:13px;padding:17px}.stats-metric-label{font-size:13px;color:var(--muted);line-height:1.7}.stats-metric-value{font-size:27px;font-weight:bold;color:var(--green);margin-top:7px}.level-stat-row{display:flex;justify-content:space-between;gap:12px;padding:11px 4px;border-bottom:1px solid var(--border);line-height:1.8}.level-stat-row:last-child{border-bottom:0}.level-stat-row strong{color:var(--green)}
-@media(max-width:480px){.topbar{padding:23px 15px}.brand-mark{width:48px;height:48px;font-size:24px}.brand h1{font-size:21px}.brand p{font-size:12px}main{margin-top:20px;padding-right:12px;padding-left:12px}.card{padding:19px}.dashboard-heading{align-items:stretch}.logout-button{width:100%}.students-heading{align-items:stretch}.students-heading button{width:100%}.modal{padding:20px}.attendance-row{grid-template-columns:1fr;gap:7px}.attendance-controls select{width:100%}}
+    <title>معهد الحسنين | لوحة المعلمين</title>
+
+    <style>
+        :root {
+            --green: #35452f;
+            --green-light: #53694a;
+            --gold: #c3a66b;
+            --beige: #f5f1e7;
+            --white: #ffffff;
+            --text: #30382d;
+            --muted: #777d72;
+            --border: #e8e2d5;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Tahoma, Arial, sans-serif;
+            background: var(--beige);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .topbar {
+            background: var(--green);
+            color: white;
+            padding: 28px 18px 25px;
+            border-bottom: 5px solid var(--gold);
+        }
+
+        .topbar-inner {
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand-mark {
+            width: 58px;
+            height: 58px;
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--gold);
+            border-radius: 16px;
+            color: var(--gold);
+            font-size: 29px;
+            font-weight: bold;
+        }
+
+        .brand h1 {
+            margin: 0 0 8px;
+            font-size: 25px;
+        }
+
+        .brand p {
+            margin: 0;
+            color: #e6e4d9;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 16px 35px;
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 22px;
+            box-shadow: 0 5px 20px rgba(42, 51, 35, 0.04);
+        }
+
+        .login-card {
+            max-width: 470px;
+            margin: 35px auto;
+        }
+
+        .section-title {
+            color: var(--green);
+            font-size: 21px;
+            margin: 0 0 9px;
+        }
+
+        .description {
+            color: var(--muted);
+            line-height: 1.9;
+            font-size: 14px;
+            margin: 0 0 22px;
+        }
+
+        label {
+            display: block;
+            margin: 16px 0 8px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            min-height: 48px;
+            border: 1px solid #dcd6c9;
+            border-radius: 10px;
+            padding: 12px 14px;
+            background: #fffefa;
+            color: var(--text);
+            outline: none;
+        }
+
+        input:focus {
+            border-color: var(--green-light);
+            box-shadow: 0 0 0 3px rgba(83, 105, 74, 0.12);
+        }
+
+        .primary-button,
+        .logout-button {
+            min-height: 47px;
+            border: 0;
+            border-radius: 10px;
+            padding: 12px 18px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .primary-button {
+            background: var(--green);
+            color: white;
+        }
+
+        .primary-button:hover {
+            background: var(--green-light);
+        }
+
+        .login-button {
+            width: 100%;
+            margin-top: 22px;
+        }
+
+        button:disabled {
+            opacity: 0.65;
+            cursor: wait;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-size: 14px;
+            line-height: 1.9;
+            overflow-wrap: anywhere;
+        }
+
+        .error {
+            color: #a52c2c;
+        }
+
+        .success {
+            color: var(--green-light);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .dashboard-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+        }
+
+        .welcome {
+            color: var(--muted);
+            font-size: 14px;
+            margin: 7px 0 0;
+            overflow-wrap: anywhere;
+        }
+
+        .logout-button {
+            background: #eee8db;
+            color: var(--green);
+        }
+
+        .logout-button:hover {
+            background: #e3dac8;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            background: #edf0e7;
+            color: var(--green);
+            font-size: 23px;
+            flex-shrink: 0;
+        }
+
+        .stat-label {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
+
+        .stat-number {
+            color: var(--green);
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .search-box {
+            position: relative;
+            margin: 18px 0;
+        }
+
+        .search-box input {
+            padding-right: 43px;
+            background: #faf9f5;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 14px;
+            top: 13px;
+            font-size: 19px;
+            color: var(--muted);
+        }
+
+        .student-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 14px;
+        }
+
+        .student {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 17px;
+            border: 1px solid var(--border);
+            border-radius: 13px;
+            background: #fffefa;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .student:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .student-avatar {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            background: var(--green);
+            color: white;
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .student-info {
+            min-width: 0;
+        }
+
+        .student-name {
+            font-weight: bold;
+            font-size: 15px;
+            line-height: 1.8;
+            overflow-wrap: anywhere;
+        }
+
+        .student-level {
+            margin-top: 5px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 30px 12px;
+            color: var(--muted);
+            line-height: 2;
+        }
+
+        .empty-icon {
+            font-size: 35px;
+            margin-bottom: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 22px 15px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        @media (max-width: 480px) {
+            .topbar {
+                padding: 23px 15px;
+            }
+
+            .brand-mark {
+                width: 48px;
+                height: 48px;
+                font-size: 24px;
+            }
+
+            .brand h1 {
+                font-size: 21px;
+            }
+
+            .brand p {
+                font-size: 12px;
+            }
+
+            main {
+                margin-top: 20px;
+                padding-right: 12px;
+                padding-left: 12px;
+            }
+
+            .card {
+                padding: 19px;
+            }
+
+            .dashboard-heading {
+                align-items: stretch;
+            }
+
+            .logout-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="topbar">
+    <div class="topbar-inner">
+        <div class="brand-mark" aria-hidden="true">ح</div>
+
+        <div class="brand">
+            <h1>معهد الحسنين</h1>
+            <p>لتعليم القرآن الكريم والعلوم الشرعية</p>
+        </div>
+    </div>
+</header>
+
+<main>
+
+    <section class="card login-card" id="loginCard">
+        <h2 class="section-title">تسجيل دخول المعلمين</h2>
+
+        <p class="description">
+            أهلاً بك في لوحة إدارة المعهد.
+            سجّل الدخول للوصول إلى بيانات الطلاب.
+        </p>
+
+        <form id="loginForm">
+            <label for="email">البريد الإلكتروني</label>
+            <input
+                id="email"
+                type="email"
+                autocomplete="username"
+                required
+            >
+
+            <label for="password">كلمة المرور</label>
+            <input
+                id="password"
+                type="password"
+                autocomplete="current-password"
+                required
+            >
+
+            <button class="primary-button login-button"
+                    id="loginButton" type="submit">
+                تسجيل الدخول
+            </button>
+        </form>
+
+        <div class="message" id="message" role="status"></div>
+    </section>
+
+    <section id="dashboard" class="hidden">
+
+        <div class="dashboard-heading">
+            <div>
+                <h2 class="section-title">لوحة المعهد</h2>
+                <p class="welcome" id="welcome"></p>
+            </div>
+
+            <button class="logout-button" id="logoutButton">
+                تسجيل الخروج
+            </button>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-icon" aria-hidden="true">♧</div>
+                <div>
+                    <div class="stat-label">إجمالي الطلاب</div>
+                    <div class="stat-number" id="studentCount">—</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon" aria-hidden="true">📖</div>
+                <div>
+                    <div class="stat-label">حالة النظام</div>
+                    <div class="stat-number" style="font-size:18px">
+                        متصل
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="card">
+            <h2 class="section-title">طلاب المعهد</h2>
+            <p class="description">
+                ابحث عن الطالب بالاسم أو اعرض قائمة الطلاب المسجلين.
+            </p>
+
+            <div class="search-box">
+                <span class="search-icon" aria-hidden="true">⌕</span>
+                <input
+                    id="searchInput"
+                    type="search"
+                    placeholder="ابحث عن اسم الطالب..."
+                    aria-label="البحث عن طالب"
+                >
+            </div>
+
+            <div id="studentsList" class="student-grid">
+                <div class="empty-state">جارٍ تحميل الطلاب...</div>
+            </div>
+
+            <div class="message" id="studentsMessage" role="status"></div>
+        </section>
+
+    </section>
+
+</main>
+
+<footer>
+    معهد الحسنين لتعليم القرآن الكريم والعلوم الشرعية
+    <br>
+    العلم والعبادة
+</footer>
+
+<script type="module">
+    import { createClient } from
+        'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+    const SUPABASE_URL =
+        'https://bzxwhvblkystvpczszgg.supabase.co';
+
+    const SUPABASE_KEY =
+        'sb_publishable_OgGHxU4TsK-ZSWzhMElG0Q_SxcYbYe6';
+
+    const supabase = createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+    const loginCard = document.getElementById('loginCard');
+    const dashboard = document.getElementById('dashboard');
+    const loginForm = document.getElementById('loginForm');
+    const loginButton = document.getElementById('loginButton');
+    const message = document.getElementById('message');
+    const studentsList = document.getElementById('studentsList');
+    const studentsMessage = document.getElementById('studentsMessage');
+    const searchInput = document.getElementById('searchInput');
+    const studentCount = document.getElementById('studentCount');
+
+    let allStudents = [];
+
+    function showLogin() {
+        loginCard.classList.remove('hidden');
+        dashboard.classList.add('hidden');
+        message.textContent = '';
+        message.className = 'message';
+    }
+
+    function showDashboard(user) {
+        loginCard.classList.add('hidden');
+        dashboard.classList.remove('hidden');
+
+        document.getElementById('welcome').textContent =
+            'أهلاً بك، ' + (user.email || 'معلّم المعهد');
+    }
+
+    function renderStudents() {
+        const query = searchInput.value.trim().toLocaleLowerCase('ar');
+
+        const filtered = allStudents.filter(student => {
+            const name = String(student['Full name'] || '')
+                .toLocaleLowerCase('ar');
+
+            const level = String(student.level || '')
+                .toLocaleLowerCase('ar');
+
+            return name.includes(query) || level.includes(query);
+        });
+
+        studentsList.replaceChildren();
+        studentCount.textContent = allStudents.length;
+
+        if (filtered.length === 0) {
+            const empty = document.createElement('div');
+            empty.className = 'empty-state';
+            empty.style.gridColumn = '1 / -1';
+
+            const icon = document.createElement('div');
+            icon.className = 'empty-icon';
+            icon.textContent = allStudents.length === 0 ? '📚' : '🔎';
+
+            const text = document.createElement('div');
+            text.textContent = allStudents.length === 0
+                ? 'لا يوجد طلاب مسجلون حتى الآن.'
+                : 'لم نعثر على طالب بهذا الاسم.';
+
+            empty.append(icon, text);
+            studentsList.appendChild(empty);
+            return;
+        }
+
+        filtered.forEach(student => {
+            const box = document.createElement('article');
+            box.className = 'student';
+
+            const avatar = document.createElement('div');
+            avatar.className = 'student-avatar';
+
+            const nameText = String(
+                student['Full name'] || 'طالب'
+            );
+
+            avatar.textContent = nameText.trim().charAt(0) || 'ط';
+
+            const info = document.createElement('div');
+            info.className = 'student-info';
+
+            const name = document.createElement('div');
+            name.className = 'student-name';
+            name.textContent = nameText;
+
+            const level = document.createElement('div');
+            level.className = 'student-level';
+            level.textContent =
+                'المستوى: ' + (student.level || 'غير محدد');
+
+            info.append(name, level);
+            box.append(avatar, info);
+            studentsList.appendChild(box);
+        });
+    }
+
+    async function loadStudents() {
+        studentsList.textContent = 'جارٍ تحميل الطلاب...';
+        studentsMessage.textContent = '';
+
+        try {
+            const { data, error } = await supabase
+                .from('Students')
+                .select('*')
+                .order('id', { ascending: true });
+
+            if (error) {
+                throw error;
+            }
+
+            allStudents = data || [];
+            renderStudents();
+
+        } catch (error) {
+            studentsList.textContent =
+                'تعذر تحميل الطلاب. حاول تحديث الصفحة.';
+
+            studentsMessage.className = 'message error';
+            studentsMessage.textContent =
+                'تفاصيل الخطأ: ' + (error.message || 'خطأ غير معروف');
+
+            studentCount.textContent = '—';
+        }
+    }
+
+    loginForm.addEventListener('submit', async event => {
+        event.preventDefault();
+
+        loginButton.disabled = true;
+        loginButton.textContent = 'جارٍ تسجيل الدخول...';
+        message.textContent = '';
+        message.className = 'message';
+
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+
+        try {
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email,
+                password
+            });
+
+            if (error) {
+                throw error;
+            }
+
+            showDashboard(data.user);
+            await loadStudents();
+
+        } catch (error) {
+            message.className = 'message error';
+
+            message.textContent =
+                'تعذر تسجيل الدخول. تحقق من البريد الإلكتروني وكلمة المرور، ثم حاول مجدداً.';
+
+        } finally {
+            loginButton.disabled = false;
+            loginButton.textContent = 'تسجيل الدخول';
+        }
+    });
+
+    searchInput.addEventListener('input', renderStudents);
+
+    document.getElementById('logoutButton')
+        .addEventListener('click', async () => {
+            const button = document.getElementById('logoutButton');
+            button.disabled = true;
+
+            const { error } = await supabase.auth.signOut();
+
+            button.disabled = false;
+
+            if (error) {
+                studentsMessage.className = 'message error';
+                studentsMessage.textContent =
+                    'تعذر تسجيل الخروج. حاول مجدداً.';
+                return;
+            }
+
+            allStudents = [];
+            loginForm.reset();
+            searchInput.value = '';
+            showLogin();
+        });
+
+    async function initialize() {
+        try {
+            const { data, error } = await supabase.auth.getSession();
+
+            if (error) {
+                throw error;
+            }
+
+            if (data.session) {
+                showDashboard(data.session.user);
+                await loadStudents();
+            } else {
+                showLogin();
+            }
+
+        } catch (error) {
+            showLogin();
+            message.className = 'message error';
+            message.textContent =
+                'تعذر الاتصال بخدمة تسجيل الدخول. تحقق من اتصال الإنترنت وحاول مجدداً.';
+        }
+    }
+
+    initialize();
+</script>
+
+</body>
+</html>oard-heading{align-items:stretch}.logout-button{width:100%}.students-heading{align-items:stretch}.students-heading button{width:100%}.modal{padding:20px}.attendance-row{grid-template-columns:1fr;gap:7px}.attendance-controls select{width:100%}}
 </style>
 </head>
 <body>
